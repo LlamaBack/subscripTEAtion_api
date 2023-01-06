@@ -4,4 +4,7 @@ class Subscription < ApplicationRecord
   has_many :teas, through: :tea_subscriptions
 
   enum status: %i[cancelled active]
+
+  accepts_nested_attributes_for :tea_subscriptions
+
 end

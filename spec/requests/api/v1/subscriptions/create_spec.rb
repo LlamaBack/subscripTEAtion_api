@@ -7,6 +7,7 @@ RSpec.describe 'create subscription' do
     title: "Tea-riffic",
     price: 15,
     frequency: 1,
+    status: 0,
     teas: [
       {
         quantity: 14,
@@ -30,7 +31,7 @@ RSpec.describe 'create subscription' do
     expect(subscription1.price).to eq(body[:price])
     expect(subscription1.frequency).to eq(body[:frequency])
     expect(subscription1.teas).to match_array(teas)
-    expect(subscription1.subscription_teas[0].quantity).to eq(body[:teas][0][:quantity])
-    expect(subscription1.subscription_teas[1].quantity).to eq(body[:teas][1][:quantity])
+    expect(subscription1.tea_subscriptions[0].amount).to eq(body[:teas][0][:amount])
+    expect(subscription1.tea_subscriptions[1].amount).to eq(body[:teas][1][:amount])
   end
 end
