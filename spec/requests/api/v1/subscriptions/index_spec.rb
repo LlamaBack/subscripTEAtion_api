@@ -28,7 +28,7 @@ RSpec.describe 'view customer subscriptions' do
 
     first_sub = response_body[:data][0]
 
-    expect(first_sub[0][:attributes][:status]).to eq("active")
+    expect(first_sub[:attributes][:status]).to eq("active")
     expect(first_sub).to be_a Hash
     expect(first_sub[:id]).to be_a(String)
     expect(first_sub[:type]).to eq("subscription")

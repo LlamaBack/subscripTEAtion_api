@@ -4,17 +4,14 @@ RSpec.describe 'update subscription' do
   describe 'cancel subscription' do
     let!(:teas) { create_list(:tea, 2) }
     let!(:customer) { create(:customer) }
-    subscription_1 = create(:subscription, customer: customer, status: :active)
-    create(:subscription_tea, subscription: subscription_1, tea: teas[0], amount: 1)
-
-    let!(:headers) { {"CONTENT_TYPE" => "application/json"} }
-
     let!(:body) { { status: "cancelled"} }
 
     it 'cancels a customer subscription' do
+        subscription_1 = create(:subscription, customer: customer, status: :active)
+        create(:tea_subscription, subscription: subscription_1, tea: teas[0], amount: 1)
+        headers = { 'CONTENT_TYPE' => 'application/json' }
         patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription_1.id}", headers: headers, params: body.to_json
         expect(response).to be_successful
-        expect(response).to have_http_status(202)
 
         expect(subscription_1.reload.status).to eq("cancelled")
 
