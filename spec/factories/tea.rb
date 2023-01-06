@@ -3,6 +3,6 @@ FactoryBot.define do
     title { Faker::Tea.variety }
     description { Faker::Tea.type }
     temperature { 180 }
-    brewtime { 120 }
+    brew_time { 120 }
   end
 end
