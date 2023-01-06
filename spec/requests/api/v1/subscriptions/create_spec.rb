@@ -10,11 +10,11 @@ RSpec.describe 'create subscription' do
     status: 0,
     teas: [
       {
-        quantity: 14,
+        amount: 14,
         tea_id: teas[0].id
       },
       {
-        quantity: 14,
+        amount: 14,
         tea_id: teas[1].id
       }
     ]
