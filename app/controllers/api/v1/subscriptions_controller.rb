@@ -11,6 +11,12 @@ class Api::V1::SubscriptionsController < ApplicationController
       render json: SubscriptionSerializer.new(subscriptions)
     end
 
+    def update
+      subscription = Subscription.find(params[:id])
+      subscription.update(subscription_params)
+      render json: SubscriptionSerializer.new(subscription)
+    end
+
     private
 
     def subscription_params
